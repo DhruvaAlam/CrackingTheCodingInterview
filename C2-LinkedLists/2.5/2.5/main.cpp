@@ -128,11 +128,11 @@ Node *forwardSum(Node *first, Node* second){
     return listNew;
 }
 
-int main(int argc, const char * argv[]) {
+Node *readInLinkedList(int count){
     //get first num;
     int num;
     Node *num1 = nullptr;
-    cout << "Enter in values one at a time for first number" << endl;
+    cout << "Enter in values one at a time for" << count << " number. Enter any non integer to stop reading in." << endl;
     while (cin >> num){
         Node * temp = new Node(num);
         if (num1){
@@ -144,24 +144,17 @@ int main(int argc, const char * argv[]) {
     }
     cin.clear();
     cin.ignore();
-    
+    return num1;
+
+}
+
+int main(int argc, const char * argv[]) {
+    //get first number
+    Node * num1 = readInLinkedList(1);
     print(num1);
     
     //get second num;
-    Node *num2 = nullptr;
-    cout << "Enter in values one at a time for second number" << endl;
-    while (cin >> num){
-        Node * temp = new Node(num);
-        if (num1){
-            temp->next = num2;
-            num2 = temp;
-        } else {
-            num2 = temp;
-        }
-    }
-    cin.clear();
-    cin.ignore();
-    
+    Node *num2 = readInLinkedList(2);
     print(num2);
     
     cout << "Would you like to forward add or backwards add? Enter \"f\" for forwards or any other char for backwards " << endl;
