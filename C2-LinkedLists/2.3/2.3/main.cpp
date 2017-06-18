@@ -1,6 +1,6 @@
 //
 //  main.cpp
-//  2.2
+//  2.3
 //
 //  Created by Drew Alam on 2017-06-17.
 //  Copyright © 2017 Drew Alam. All rights reserved.
@@ -20,7 +20,6 @@ public:
         delete next;
     }
 };
-
 int main(int argc, const char * argv[]) {
     int num;
     Node *front = nullptr;
@@ -45,31 +44,35 @@ int main(int argc, const char * argv[]) {
     }
     cout << endl;
     
-    int k;
-    cout << "Enter the value for k" << endl;
-    cin >> k;
+    cout << "Enter the key of the node you wish to delete" << endl;
+    int key;
+    cin  >> key;
     
+    current = front;
+    while (current && current->value != key){
+        current = current->next;
+    }
     
-    Node *a = front;
-    Node *b  = front;
-    if (!a){
-        
+    if (not current){
+        cout << "No node with that value existed" << endl;
     } else {
-    
-        for (int i = 0; i < k; ++i){
-            if (not b->next){
-                cout << "Not enough elements in our list" << endl;
-                break;
-            }
-            b = b->next;
+        if (current->next){
+            Node *next = current->next;
+            current->value = next->value;
+            current->next = next->next;
+            next->next = nullptr;
+            delete next;
+        } else {
+            delete current;
         }
     }
-    while (b && b->next){
-        b = b->next;
-        a = a->next;
-    }
     
-    cout << "The Kth Last Element is " << a->value << endl;
+    cout << "Printing out new linked list" << endl;
+    current = front;
+    while (current){
+        cout << current->value << " ";
+        current = current->next;
+    }
+    cout << endl;
     delete front;
-    return 0;
 }
