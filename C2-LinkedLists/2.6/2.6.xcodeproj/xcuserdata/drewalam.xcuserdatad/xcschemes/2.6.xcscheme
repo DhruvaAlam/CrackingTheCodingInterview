@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4C93AD7D1EF632B80021C5BE"
-               BuildableName = "2.5"
-               BlueprintName = "2.5"
-               ReferencedContainer = "container:2.5.xcodeproj">
+               BlueprintIdentifier = "4C93AD901EF6EC640021C5BE"
+               BuildableName = "2.6"
+               BlueprintName = "2.6"
+               ReferencedContainer = "container:2.6.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4C93AD7D1EF632B80021C5BE"
-            BuildableName = "2.5"
-            BlueprintName = "2.5"
-            ReferencedContainer = "container:2.5.xcodeproj">
+            BlueprintIdentifier = "4C93AD901EF6EC640021C5BE"
+            BuildableName = "2.6"
+            BlueprintName = "2.6"
+            ReferencedContainer = "container:2.6.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4C93AD7D1EF632B80021C5BE"
-            BuildableName = "2.5"
-            BlueprintName = "2.5"
-            ReferencedContainer = "container:2.5.xcodeproj">
+            BlueprintIdentifier = "4C93AD901EF6EC640021C5BE"
+            BuildableName = "2.6"
+            BlueprintName = "2.6"
+            ReferencedContainer = "container:2.6.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4C93AD7D1EF632B80021C5BE"
-            BuildableName = "2.5"
-            BlueprintName = "2.5"
-            ReferencedContainer = "container:2.5.xcodeproj">
+            BlueprintIdentifier = "4C93AD901EF6EC640021C5BE"
+            BuildableName = "2.6"
+            BlueprintName = "2.6"
+            ReferencedContainer = "container:2.6.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
