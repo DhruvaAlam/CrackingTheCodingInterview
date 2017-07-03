@@ -1,0 +1,2 @@
+Have a circular array with start and end postions for each stack.
+Divide the array into three equal portions. Expand when needed.
