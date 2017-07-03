@@ -64,7 +64,7 @@ int main(int argc, const char * argv[]) {
             nodes.emplace(list);
         } else {
             cout << list->value << " is the node that starts the loop" << endl;
-            break; 
+            break;
         }
         list = list->next;
     }
