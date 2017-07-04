@@ -9,15 +9,13 @@
 #include <iostream>
 #include <deque>
 #include <string>
+#include <vector>
 using namespace std;
 
 class Node{
 public:
     int value;
-    Node *lowestNodeInStackBelow;
-    
-    Node (int value, Node *lowest): value{value}, lowestNodeInStackBelow{lowest}{
-        
+    Node (int value): value{value}{
     }
     
     void print(){
@@ -33,6 +31,52 @@ public:
         cout << "The node with the lowest value is: ";
         print();
         cout << endl;
+    }
+};
+
+class Stack{
+    vector<deque<int>> stackList;
+    int maxPerStack;
+    
+public:
+    Stack(int maxSize): maxPerStack{maxSize}{
+    }
+    void print(){
+        int i = 0;
+        for (auto &subStack: stackList){
+            cout << "Elements in substack: " << i << endl;
+            for (int num: subStack){
+                cout << num << " ";
+            }
+            cout  << endl;
+            ++i;
+        }
+    }
+    void push_front(int num){
+    //get the last stack
+        if (stackList.empty() || (stackList.at(stackList.size() - 1).size() == maxPerStack)){
+            //create new substack
+            stackList.emplace_back(deque<int>());
+        }
+        //insert into last stack
+        stackList.at(stackList.size() -1).push_front(num);
+    }
+    int front(){
+        if (stackList.empty()){
+            return -1;
+        }
+        return stackList.at(stackList.size() -1 ).front();
+    }
+    
+    int pop_front(){
+        if (stackList.empty()){
+            cout << "Nothing else to pop off, stack is empty." << endl;
+            return -1;
+        }
+        int top =front();
+        //pop it off
+        stackList.at(stackList.size() - 1).pop_front();
+        return top;
     }
 };
 
@@ -54,32 +98,18 @@ void printStack (deque <Node *> &stack){
 
 
 int main(int argc, const char * argv[]) {
-    deque<Node *> stack;
-    Node * lowest = nullptr;
+    cout << "How many plates per stack would you like?" << endl;
+    int num = 10;
+    cin >> num;
+    Stack stack (num);
     string input;
-    int num;
-    cout << "Enter numbers one at a time to push elements onto the stack. Enter \"pop\" to pop the top element of the stack. Enter \"min\" to get the lowest elemnt of the list. Enter anything else to exit and print the stack." << endl;
+    cout << "Enter numbers one at a time to push elements onto the stack. Enter \"pop\" to pop the top element of the stack. Enter \"top\" to view the top element of the stack. Enter anything else to exit and print the stack." << endl;
     while (cin >> input){
         if (input == "pop"){
-            //get top element and print it off
-            Node * temp = stack.front();
-            temp->pop();
-            
-            //if it is the lowest element, then update lowest
-            if (temp == lowest){
-                lowest = temp->lowestNodeInStackBelow;
-            }
-            //pop it off the stack
             stack.pop_front();
-            //free the memory
-            delete temp;
             continue;
-        } else if (input == "min"){
-            if (lowest){
-                lowest->lowPrint();
-            } else {
-                cout << "There are no element in the stack." << endl;
-            }
+        } else if (input == "top"){
+            cout << stack.front() << endl;
             continue;
         }
         
@@ -89,23 +119,8 @@ int main(int argc, const char * argv[]) {
             cout << "Could not parse input as valid input. Exiting." << endl;
             break;
         }
-        Node * temp = new Node(num, lowest ? lowest : nullptr);
-        stack.push_front(temp);
-        if (not lowest){
-            lowest = temp;
-        } else {
-            if (temp->value < lowest->value){
-                lowest = temp;
-            }
-        }
-        printStack(stack);
+        stack.push_front(num);
     }
-    printStack(stack);
-    //delete elements of the stack
-    while (not stack.empty()){
-        Node *top = stack.front();
-        stack.pop_front();
-        delete top;
-    }
+    stack.print();
     
 }
